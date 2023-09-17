@@ -1,0 +1,163 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 40vw;
+    margin-top: 1rem
+}
+
+.slider {
+    overflow: hidden;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, .5);
+    display: grid;
+}
+
+img{
+    width: 100%;
+}
+
+.slide1 { 
+    grid-area: slide1;
+    opacity: 0;
+}
+
+.slide2 { 
+    grid-area: slide2;
+    opacity: 0;
+}
+
+.slide3 { 
+    grid-area: slide3;
+    opacity: 0;
+}
+
+.slide4 { 
+    grid-area: slide4;
+    opacity: 0;
+}
+
+.wrapper > input {
+	display: none;
+}
+
+.slider-footer{
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-text{
+    display: grid;
+}
+
+.text{
+    font-family: Arial, serif;
+    font-size: 1.2rem;
+    color: #6b5f5f;
+}
+
+.text1{
+    grid-area: text1;
+    opacity: 0;
+}
+
+.text2{
+    grid-area: text2;
+    opacity: 0;
+}
+
+.text3{
+    grid-area: text3;
+    opacity: 0;
+}
+
+.text4{
+    grid-area: text4;
+    opacity: 0;
+}
+
+.slider-controls{
+    display: flex;
+}
+
+label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+
+.radio-button{
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0.2rem;
+    display: inline-block;
+    border-radius: 50%;
+    border: 0.2rem solid #6b5f5f;
+    box-shadow: 0 0 0.2em black;
+}
+
+label:hover .radio-button{
+    background-color: #6b5f5f;
+    transition: 0.5s;
+}
+
+#slide1:checked ~ .slider-footer > .slider-controls > label[for="slide1"] > .radio-button,
+#slide2:checked ~ .slider-footer > .slider-controls > label[for="slide2"] > .radio-button,
+#slide3:checked ~ .slider-footer > .slider-controls > label[for="slide3"] > .radio-button,
+#slide4:checked ~ .slider-footer > .slider-controls > label[for="slide4"] > .radio-button {
+    background-color: #6b5f5f;
+    box-shadow: none;
+    cursor: auto;
+}
+
+@keyframes scaling {
+    0%   { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#slide1:checked ~ .slider > .slide1,
+#slide2:checked ~ .slider > .slide2,
+#slide3:checked ~ .slider > .slide3,
+#slide4:checked ~ .slider > .slide4,
+#slide1:checked ~ .slider-footer > .slider-text > .text1,
+#slide2:checked ~ .slider-footer > .slider-text > .text2,
+#slide3:checked ~ .slider-footer > .slider-text > .text3,
+#slide4:checked ~ .slider-footer > .slider-text > .text4 {
+    z-index: 1;
+    opacity: 1;
+    transition: opacity ease-in-out .3s;
+    animation: scaling 1s;
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        max-width: 60vw;
+    }
+
+    .slider-footer{
+        flex-direction: column-reverse;
+        row-gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .slider-controls{
+        align-self: center;
+    }
+
+    .slider-text {
+        justify-content: start;
+    }
+}
