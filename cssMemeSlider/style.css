@@ -114,6 +114,7 @@ label:hover .radio-button{
 #slide4:checked ~ .slider-footer > .slider-controls > label[for="slide4"] > .radio-button {
     background-color: #6b5f5f;
     box-shadow: none;
+    cursor: auto;
 }
 
 @keyframes scaling {
